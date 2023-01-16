@@ -1,6 +1,7 @@
 // create popup for adding books to library
 function popUp {
-    
+    const popup = document.querySelector('.popup'); 
+    popup.classList.toggle('show')
 }
 
 
