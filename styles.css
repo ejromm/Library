@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+html {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+body {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+.container {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+.title-container {
+    height: 25%;
+    width: 100%;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.title {
+    font-size: 3rem;
+    font-weight: 400;
+    display: flex
+}
+.library-container {
+    height: 75%;
+    display: flex;
+}
+.button_plus {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    cursor: pointer;
+    border: 2px solid lightblue;
+  
+    /* Mittig */
+    bottom: 1%;
+    right: 1%;
+  }
+  
+  .button_plus:after {
+    content: '';
+    position: absolute;
+    transform: translate(-50%, -50%);
+    height: 4px;
+    width: 50%;
+    background: lightblue;
+    top: 50%;
+    left: 50%;
+  }
+  
+  .button_plus:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: lightblue;
+    height: 50%;
+    width: 4px;
+  }
+  
+  .button_plus:hover:before,
+  .button_plus:hover:after {
+    background: #fff;
+    transition: 0.2s;
+  }
+  
+  .button_plus:hover {
+    background-color: #095776;
+    transition: 0.2s;
+  }
