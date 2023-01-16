@@ -24,8 +24,9 @@ body {
 .title-container {
     height: 25%;
     width: 100%;
-    background-color: lightblue;
+    background-color: #457b9d;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -37,6 +38,10 @@ body {
 .library-container {
     height: 75%;
     display: flex;
+    background-color: #1d3557;
+}
+#library-icon {
+    height: 10vh;
 }
 .button_plus {
     position: absolute;
@@ -82,4 +87,60 @@ body {
   .button_plus:hover {
     background-color: #095776;
     transition: 0.2s;
+  }
+  .popup {
+    visibility: hidden;
+    height: 600px;
+    width: 400px;
+    position: absolute;
+    left: 37%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+  }
+  .popup h1 {
+    font-weight: 400;
+    color: #457b9d;
+    font-size: 3rem;
+    margin-top: 5%;
+  }
+  form {
+    height: 80%;
+    width: 90%;
+    font-size: 1.2rem;
+    font-weight: 300;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 15%;
+    
+    
+  }
+  input {
+    height: 3rem;
+    width: 100%;
+    background-color:  #f7f7f7;
+    font-size: 1rem;
+  }
+  input:focus {
+    outline: none;
+  }
+  select {
+    height: 3rem;
+    width: 100%;
+    background-color: #f7f7f7;
+  }
+  select:focus {
+    outline: none;
+  }
+  #submit {
+    margin-top: auto;
+    margin-bottom: 5%;
+    background-color: #095776;
+    color: white;
+    font-size: 1.5rem;
   }
