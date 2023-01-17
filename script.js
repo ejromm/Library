@@ -1,8 +1,18 @@
 // create popup for adding books to library
-function popUp {
-    const popup = document.querySelector('.popup'); 
-    popup.classList.toggle('show')
+//blur body 
+const container = document.querySelector(".container");
+const popup = document.querySelector('.popup');
+function openPopup() {
+    popup.classList.toggle('show');
+    
+
 }
+
+
+
+
+
+
 
 
 
@@ -21,6 +31,5 @@ class Book {
 }
 
 // add book function
-function addBookToLibrary {
-    let newBook = new Book(title, author, pages, read); 
+function addBookToLibrary() {
 }
