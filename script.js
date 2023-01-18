@@ -1,13 +1,19 @@
 // create popup for adding books to library
 //blur body 
-const container = document.querySelector(".container");
+const blurContainer = document.querySelector('.container')
 const popup = document.querySelector('.popup');
 function openPopup() {
-    popup.classList.toggle('show');
+    popup.classList.add('show');
+    blurContainer.classList.add('blur')
     
 
 }
-
+// close button 
+const closeBtn = document.querySelector('.close');
+closeBtn.addEventListener('click', function() {
+    popup.classList.remove('show');
+    blurContainer.classList.remove('blur')
+})
 
 
 
