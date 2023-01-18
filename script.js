@@ -21,7 +21,7 @@ let myLibrary = [
 {title: 'Temple of the Golden Pavilion', 
  author: 'Yukio Mishima', 
  pages: 239,
- read: true
+ read: false
 }
 
 ]; 
@@ -32,7 +32,7 @@ class Book {
         this.title = title;
         this.author = author;
         this.pages = pages;
-        this.read = read;
+        this.read = false;
     }
 }
 // variables for inputs
@@ -69,4 +69,27 @@ submitBtn.addEventListener('click', function() {
  addBookToLibrary(); 
 }); 
 
-// populate screen with book 
+// create first card  
+const card = document.createElement('div');
+document.querySelector('.cards-grid').appendChild(card);
+card.classList.add('card'); 
+const placeHoldTitle = myLibrary[0].title; 
+const placeHoldAuthor = myLibrary[0].author;
+const placeHoldPages = myLibrary[0].pages;
+function checkIfRead() {
+    for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].read == true) {
+            return 'Read';
+        } else {
+            return 'Not Read'
+        }
+    }
+}
+const placeHoldRead = checkIfRead(); 
+card.innerHTML = `<div id="card-title"><span id=card-title-text>Book</br> Title: </span>${placeHoldTitle}</div>
+<div class="" id="card-author"><span id=author-text>Author: </span> ${placeHoldAuthor}</div>
+<div id="card-pages"><span id=pages-text>Pages: </span>${placeHoldPages}</div>
+<div id="card-read">${placeHoldRead}</div>
+<button class="change-read"><img src="icons/edit-svgrepo-com.svg" alt="" id="change-read-img"></button>
+<button class="delete-book"><img src="icons/delete-svgrepo-com.svg" alt="" id="delete-book-img"></button>`; 
+

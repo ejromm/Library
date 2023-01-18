@@ -177,6 +177,7 @@ body {
   }
   .show {
     visibility: visible;
+    filter: blur(0);
     
    
   }
@@ -184,7 +185,7 @@ body {
    filter: blur(2px);
   }
   .card {
-    background-color: white;
+    background-color: #457b9d;
     width: 275px;
     height: 400px;
     display: flex;
@@ -200,23 +201,39 @@ body {
   }
   #card-title {
     background-color:#457b9d;
+    font-style: italic;
+    font-size: 1rem;
     height: 16.6%;
     border: .5px solid black;
     color: white;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
   }
+  #card-title-text {
+    font-style:normal;
+    font-weight: 500;
+    margin-left: 7%;
+    margin-right: 10%;
+  }
   #card-author {
     height: 16.6%;
+    font-style: italic;
     background-color:#457b9d;
     border: .5px solid black;
     color: white;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    
+  }
+  #author-text {
+    font-style: normal;
+    margin-left: 7%;
+    margin-right: 20%;
+    font-weight: 500;
   }
   #card-pages {
     height: 16.6%;
@@ -224,8 +241,14 @@ body {
     border: .5px solid black;
     color: white;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+  }
+  #pages-text {
+    font-style: normal;
+    margin-left: 7%;
+    margin-right: 35%;
+    font-weight: 500;
   }
   #card-read {
     height: 16.6%;
@@ -235,31 +258,80 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-bottom: none;
   }
   .change-read {
-    height: 16.6%;
-    background-color:#457b9d;
-    background-color: #a8dadc;
-    border: .5px solid black;
-    border-radius: 3px;
-  
-    
+    height: 16%;
+    border: 1px solid #c4c4c4;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 5px 0px #c4c4c4;
+  -moz-box-shadow: 0px 5px 0px #c4c4c4;
+  -ms-box-shadow: 0px 5px 0px #c4c4c4;
+  -o-box-shadow: 0px 5px 0px #c4c4c4;
+  box-shadow: 0px 5px 0px #c4c4c4;
+  color: #222;
+  text-shadow: 1px 1px 1px #fff;
+  -webkit-transition: All 250ms ease;
+  -moz-transition: All 250ms ease;
+  -o-transition: All 250ms ease;
+  -ms-transition: All 250ms ease;
+  transition: All 250ms ease;
+  }
+  .change-read:active {
+    position: relative;
+    top: 5px;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -ms-box-shadow: none !important;
+    -o-box-shadow: none !important;
+    box-shadow: none !important;
+    -webkit-transition: All 250ms ease;
+    -moz-transition: All 250ms ease;
+    -o-transition: All 250ms ease;
+    -ms-transition: All 250ms ease;
+    transition: All 250ms ease;
   }
   .delete-book {
-    height: 17%;
-    background-color: #e63946;
-    border: .5px solid black;
+    height: 15%;
+    margin-top: 1%;
+    background-color: #df4242;;
+    color: #fff;
+    border: 1px solid #a01b1b;
     border-radius: 3px;
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-box-shadow: 0px 5px 0px #a01b1b;
+  -moz-box-shadow: 0px 5px 0px #a01b1b;
+  -ms-box-shadow: 0px 5px 0px #a01b1b;
+  -o-box-shadow: 0px 5px 0px #a01b1b;
+  box-shadow: 0px 5px 0px #a01b1b;
+  text-shadow: 1px 1px 1px #a01b1b;
+  -webkit-transition: All 250ms ease;
+  -moz-transition: All 250ms ease;
+  -o-transition: All 250ms ease;
+  -ms-transition: All 250ms ease;
+  transition: All 250ms ease;
   }
-  #change-read-img {
-    height: 50%;
-    
+  .delete-book:active {
+    position: relative;
+    top: 5px;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -ms-box-shadow: none !important;
+    -o-box-shadow: none !important;
+    box-shadow: none !important;
+    -webkit-transition: All 250ms ease;
+    -moz-transition: All 250ms ease;
+    -o-transition: All 250ms ease;
+    -ms-transition: All 250ms ease;
+    transition: All 250ms ease;
   }
-  #delete-book-img {
+  #change-read-img, #delete-book-img {
     height: 50%;
-   
   }
   .cards-grid {
     margin-left: 1%;
