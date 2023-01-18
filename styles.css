@@ -173,18 +173,34 @@ body {
   .close:after {
     transform: rotate(-45deg);
   }
-  
-  
-  
-
-
-
   .show {
     visibility: visible;
     
    
   }
-  
   .blur {
    filter: blur(2px);
+  }
+  .card {
+    background-color: white;
+    width: 275px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 50px;
+    font-size: 1.2rem;
+   
+  }
+  #card-title {
+    margin-top: 5%;
+  }
+  .cards-grid {
+    margin-left: 1%;
+    margin-top: 5%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 275px 275px 275px 275px 275px; 
+    grid-template-rows: 400px;
+    gap: 20px;
   }
