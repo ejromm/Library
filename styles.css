@@ -216,6 +216,7 @@ body {
     font-style:normal;
     font-weight: 500;
     margin-left: 7%;
+    white-space: pre; 
     margin-right: 10%;
   }
   #card-author {
@@ -232,7 +233,7 @@ body {
   #author-text {
     font-style: normal;
     margin-left: 7%;
-    margin-right: 20%;
+    margin-right: 10%;
     font-weight: 500;
   }
   #card-pages {
@@ -247,7 +248,7 @@ body {
   #pages-text {
     font-style: normal;
     margin-left: 7%;
-    margin-right: 35%;
+    margin-right: 10%;
     font-weight: 500;
   }
   #card-read {
