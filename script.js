@@ -15,7 +15,7 @@ closeBtn.addEventListener('click', function() {
 })
 
 // create library array
-const myLibrary = [
+let myLibrary = [
 {title: 'Temple of the Golden Pavilion', 
  author: 'Yukio Mishima', 
  pages: 239,
@@ -42,7 +42,6 @@ class Book {
 const submit = document.querySelector('form').addEventListener('submit', (event) => {
 event.preventDefault(); 
 addBookToLibrary(); 
-renderAndDisplay(); 
 updateLocalStorage(); 
 })
 
@@ -61,6 +60,7 @@ const readInput = changeToBoolean(document.querySelector('#read').value);
  let newBook = new Book(titleInput, authorInput, pagesInput, readInput); 
  myLibrary.push(newBook);
  updateLocalStorage(); 
+ renderAndDisplay(newBook); 
 
 
 }
@@ -73,10 +73,11 @@ function updateLocalStorage() {
 
 
 // render library contents to cards in HTML DOM 
-function renderAndDisplay() {
+function renderAndDisplay(book) {
+
     const libraryDisplay = document.querySelector('.cards-grid'); 
- for (let i = 0 ; i < myLibrary.length; i++) {
-    if (myLibrary.length <= 5) {
+ 
+    if (myLibrary.length < 5) {
         //create card
         const card = document.createElement('div'); 
         libraryDisplay.appendChild(card); 
@@ -107,7 +108,7 @@ function renderAndDisplay() {
         titleText.textContent = 'Book\r\n Title: ' 
         authorText.textContent = 'Author: '
         pagesText.textContent = 'Pages:'
-        cardReadDiv.textContent = changeReadContent(myLibrary[i].read); 
+        cardReadDiv.textContent = changeReadContent(book.read); 
         
 
         // edit and delete buttons
@@ -123,6 +124,7 @@ function renderAndDisplay() {
         // edit and delete button id's and append images 
         editBtn.classList.add('change-read'); 
         deleteBtn.classList.add('delete-book'); 
+        
         editBtn.appendChild(editImg); 
         deleteBtn.appendChild(deleteImg); 
 
@@ -149,20 +151,42 @@ function renderAndDisplay() {
         cardPagesDiv.appendChild(pagesTextValue);
 
         // set content of values
-        titleTextValue.textContent = myLibrary[i].title; 
-        authorTextValue.textContent = myLibrary[i].author;
-        pagesTextValue.textContent = myLibrary[i].pages; 
+        titleTextValue.textContent = book.title; 
+        authorTextValue.textContent = book.author;
+        pagesTextValue.textContent = book.pages; 
         
-        // event listeners for edit and delete buttons 
-        
-        
+        // event listeners delete button
+        const deleteButtons = document.querySelectorAll('.delete-book').forEach(btn => {
+            btn.addEventListener('click', () => {
+                myLibrary.splice(myLibrary.indexOf(book), 1); 
+                updateLocalStorage(); 
+                card.remove(); 
 
+            })
+        })
+        // event listener for edit buttons 
+        const editButtons = document.querySelectorAll('.change-read').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (book.read === false) {
+                    book.read = true; 
+                    updateLocalStorage(); 
+                    cardReadDiv.textContent = 'Read'; 
+                } else if (book.read === true) {
+                    book.read = false; 
+                    updateLocalStorage(); 
+                    cardReadDiv.textContent = 'Not Read'
+                }
+            })
+        })
+      
     } else return; 
  } 
-}
+
 // call function to log placeholder content 
-renderAndDisplay(); 
+renderAndDisplay(myLibrary[0]); 
 // function to change read input booleans to 'read' or 'not read' 
 function changeReadContent(input) {
     return input.value ? 'Read' : 'Not Read' 
 }
+
+
