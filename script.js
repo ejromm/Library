@@ -9,10 +9,16 @@ function openPopup() {
 
 // close button 
 const closeBtn = document.querySelector('.close');
-closeBtn.addEventListener('click', function() {
-    popup.classList.remove('show');
-    blurContainer.classList.remove('blur')
-})
+closeBtn.addEventListener('click', closeModal())
+
+//function to close modal
+function closeModal() {
+    popup.classList.remove('show'); 
+    blurContainer.classList.remove('blur'); 
+
+}
+
+
 
 // create library array
 let myLibrary = [
@@ -23,7 +29,7 @@ let myLibrary = [
 }
 
 ]; 
-
+console.log(myLibrary); 
 // book function
 class Book {
     constructor(title, author, pages, read) {
@@ -34,15 +40,13 @@ class Book {
     }
 }
 
-
-
-
-
 //create submit form action 
 const submit = document.querySelector('form').addEventListener('submit', (event) => {
 event.preventDefault(); 
 addBookToLibrary(); 
 updateLocalStorage(); 
+console.log(localStorage); 
+closeModal(); 
 })
 
 
@@ -59,6 +63,7 @@ const readInput = changeToBoolean(document.querySelector('#read').value);
 
  let newBook = new Book(titleInput, authorInput, pagesInput, readInput); 
  myLibrary.push(newBook);
+ console.log(myLibrary);
  updateLocalStorage(); 
  renderAndDisplay(newBook); 
 
@@ -66,9 +71,18 @@ const readInput = changeToBoolean(document.querySelector('#read').value);
 }
 // function for updating local storage contents 
 function updateLocalStorage() {
-    localStorage.setItem('libary', JSON.stringify(myLibrary)); 
+    localStorage.setItem('library', JSON.stringify(myLibrary)); 
 }
+// stop removal of objects on refresh 
+function restoreLocalStorage() {
+   if (localStorage.getItem('library')) {
+    let object = JSON.parse(localStorage.getItem('library')); 
+    myLibrary = object; 
+    console.log(myLibrary);
 
+   }
+
+}
 
 
 
@@ -145,6 +159,7 @@ function renderAndDisplay(book) {
         const authorTextValue = document.createElement('span'); 
         const pagesTextValue = document.createElement('span'); 
 
+
         //append values to title divs
         cardTitleDiv.appendChild(titleTextValue); 
         cardAuthorDiv.appendChild(authorTextValue); 
@@ -156,37 +171,57 @@ function renderAndDisplay(book) {
         pagesTextValue.textContent = book.pages; 
         
         // event listeners delete button
-        const deleteButtons = document.querySelectorAll('.delete-book').forEach(btn => {
-            btn.addEventListener('click', () => {
-                myLibrary.splice(myLibrary.indexOf(book), 1); 
-                updateLocalStorage(); 
-                card.remove(); 
-
-            })
+     
+        deleteBtn.addEventListener('click', () => {
+            myLibrary.splice(myLibrary.indexOf(book), 1); 
+            updateLocalStorage(); 
+            console.log(myLibrary)
+            card.remove(); 
         })
         // event listener for edit buttons 
-        const editButtons = document.querySelectorAll('.change-read').forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (book.read === false) {
-                    book.read = true; 
-                    updateLocalStorage(); 
-                    cardReadDiv.textContent = 'Read'; 
-                } else if (book.read === true) {
-                    book.read = false; 
-                    updateLocalStorage(); 
-                    cardReadDiv.textContent = 'Not Read'
-                }
-            })
+        
+        editBtn.addEventListener('click', () => {
+            if(book.read === false) {
+                book.read = true; 
+                updateLocalStorage(); 
+                cardReadDiv.textContent = 'Read'
+                console.log(myLibrary)
+            } else if (book.read === true) {
+                book.read = false; 
+                updateLocalStorage(); 
+                cardReadDiv.textContent = 'Not Read'
+                console.log(myLibrary)
+            }
         })
       
     } else return; 
  } 
 
-// call function to log placeholder content 
-renderAndDisplay(myLibrary[0]); 
+// call function to render and display all contents of myLibrary
+
 // function to change read input booleans to 'read' or 'not read' 
 function changeReadContent(input) {
-    return input.value ? 'Read' : 'Not Read' 
+    return input ? 'Read' : 'Not Read' 
 }
 
 
+// document content load event listener 
+document.addEventListener('DOMContentLoaded', () => {
+    restoreLocalStorage(); 
+    console.log(localStorage)
+    function renderAll() {
+        for(let i = 0; i < myLibrary.length; i++) {
+         renderAndDisplay(myLibrary[i])
+        }
+     }
+     renderAll(); 
+      
+
+
+
+
+
+  
+        
+    
+})

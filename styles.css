@@ -202,7 +202,7 @@ body {
   #card-title {
     background-color:#457b9d;
     font-style: italic;
-    font-size: 1rem;
+    font-size: 10px;
     height: 16.6%;
     border: .5px solid black;
     color: white;
@@ -214,6 +214,7 @@ body {
   }
   #card-title-text {
     font-style:normal;
+    font-size: 1rem;
     font-weight: 500;
     margin-left: 7%;
     white-space: pre; 
